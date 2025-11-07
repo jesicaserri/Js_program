@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Image Slider</title>
+    <style>
+        .slider {
+            text-align: center;
+            height: 400px;
+            width: 60%;
+            margin: auto;
+            position: relative;
+        }
+        .slider img {
+            height: 100%;
+            width: 50%;
+            object-fit: cover;
+        }
+        button {
+            padding: 20px;
+            border: none;
+            background-color: pink;
+            border-radius: 10px;
+            margin: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #ff99cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <img src="https://images.pexels.com/photos/352519/pexels-photo-352519.jpeg?cs=srgb&dl=pexels-diana-westberg-114595-352519.jpg&fm=jpg" alt="slider image" id="displayImg" />
+        <br />
+        <button id="prev">Previous</button>
+        <button id="next">Next</button>
+    </div>
+
+    <script>
+        let Images = ["https://images.pexels.com/photos/352519/pexels-photo-352519.jpeg?cs=srgb&dl=pexels-diana-westberg-114595-352519.jpg&fm=jpg",
+"https://i.pinimg.com/236x/40/46/6e/40466e5e568b6234e9c721056fbfdf2a.jpg", "https://media.istockphoto.com/id/1900824579/photo/the-green-man-looks-out-from-the-queue-stand-out-from-the-gray-mass-initiative-and-talent.jpg?s=612x612&w=0&k=20&c=V1m_DFqX57IoMEZqThkN2to6nDu_-31c-7Gn3uo_H3c= "];
+        let currentIndex = 0;
+        let display = document.getElementById("displayImg");
+        let previousBTn = document.getElementById("prev");
+        let nextBTn = document.getElementById("next");
+
+        nextBTn.addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % Images.length;
+            display.src = Images[currentIndex];
+        });
+
+        previousBTn.addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + Images.length) % Images.length;
+            display.src = Images[currentIndex];
+        });
+        setInterval(()=>{
+                        currentIndex = (currentIndex + 1) % Images.length;
+                                    display.src = Images[currentIndex];
+
+
+        },2000);
+    </script>
+</body>
+</html>
